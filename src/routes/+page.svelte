@@ -56,145 +56,154 @@
 
 <br />
 
-<div class="calculator">
-	<input type="text" bind:value={console} readonly="true" />
-	<div class="buttons">
-		<div class="operations">
-			<button
-				on:click={() => {
-					setOperation('add');
-				}}
-			>
-				+
-			</button>
-			<button
-				on:click={() => {
-					setOperation('substract');
-				}}
-			>
-				-
-			</button>
-			<button
-				on:click={() => {
-					setOperation('multiply');
-				}}
-			>
-				&times;
-			</button>
-			<button
-				on:click={() => {
-					setOperation('divide');
-				}}
-			>
-				&divide;
-			</button>
-		</div>
-		<div class="numbers">
-			<div>
+<div class="container">
+	<div class="calculator">
+		<input type="text" bind:value={console} readonly="true" />
+		<div class="buttons">
+			<div class="operations">
 				<button
 					on:click={() => {
-						setValue(7);
+						setOperation('add');
 					}}
 				>
-					7
+					+
 				</button>
 				<button
 					on:click={() => {
-						setValue(8);
+						setOperation('substract');
 					}}
 				>
-					8
+					-
 				</button>
 				<button
 					on:click={() => {
-						setValue(9);
+						setOperation('multiply');
 					}}
 				>
-					9
+					&times;
+				</button>
+				<button
+					on:click={() => {
+						setOperation('divide');
+					}}
+				>
+					&divide;
 				</button>
 			</div>
-			<div>
-				<button
-					on:click={() => {
-						setValue(4);
-					}}
-				>
-					4
-				</button>
-				<button
-					on:click={() => {
-						setValue(5);
-					}}
-				>
-					5
-				</button>
-				<button
-					on:click={() => {
-						setValue(6);
-					}}
-				>
-					6
-				</button>
+			<div class="numbers">
+				<div>
+					<button
+						on:click={() => {
+							setValue(7);
+						}}
+					>
+						7
+					</button>
+					<button
+						on:click={() => {
+							setValue(8);
+						}}
+					>
+						8
+					</button>
+					<button
+						on:click={() => {
+							setValue(9);
+						}}
+					>
+						9
+					</button>
+				</div>
+				<div>
+					<button
+						on:click={() => {
+							setValue(4);
+						}}
+					>
+						4
+					</button>
+					<button
+						on:click={() => {
+							setValue(5);
+						}}
+					>
+						5
+					</button>
+					<button
+						on:click={() => {
+							setValue(6);
+						}}
+					>
+						6
+					</button>
+				</div>
+				<div>
+					<button
+						on:click={() => {
+							setValue(1);
+						}}
+					>
+						1
+					</button>
+					<button
+						on:click={() => {
+							setValue(2);
+						}}
+					>
+						2
+					</button>
+					<button
+						on:click={() => {
+							setValue(3);
+						}}
+					>
+						3
+					</button>
+				</div>
+				<div>
+					<button
+						on:click={() => {
+							setValue(0);
+						}}
+					>
+						0
+					</button>
+					<button
+						on:click={() => {
+							setValue('.');
+						}}
+					>
+						.
+					</button>
+					<button
+						on:click={() => {
+							setValue('C');
+						}}
+					>
+						C
+					</button>
+				</div>
 			</div>
-			<div>
-				<button
-					on:click={() => {
-						setValue(1);
-					}}
-				>
-					1
-				</button>
-				<button
-					on:click={() => {
-						setValue(2);
-					}}
-				>
-					2
-				</button>
-				<button
-					on:click={() => {
-						setValue(3);
-					}}
-				>
-					3
-				</button>
+			<div class="equal">
+				<button on:click={equal}> = </button>
 			</div>
-			<div>
-				<button
-					on:click={() => {
-						setValue(0);
-					}}
-				>
-					0
-				</button>
-				<button
-					on:click={() => {
-						setValue('.');
-					}}
-				>
-					.
-				</button>
-				<button
-					on:click={() => {
-						setValue('C');
-					}}
-				>
-					C
-				</button>
-			</div>
-		</div>
-		<div class="equal">
-			<button on:click={equal}> = </button>
 		</div>
 	</div>
 </div>
 
 <style>
+	h1 {
+		margin-top: 50px;
+		text-align: center;
+		font-size: 30px;
+	}
+	.container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100vw;
+	}
 	.calculator {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
 		width: 300px;
 		border: 1px solid #eee;
 		box-shadow: 2px 2px 2px #eee;
