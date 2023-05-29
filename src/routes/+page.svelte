@@ -2,24 +2,19 @@
 	let total = 0;
 	let display = '';
 	let state = null;
-
 	function resolveState() {
 		switch (state) {
 			case 'add':
-				total !== 0 && (total += parseFloat(display));
-				!display && (display += '+');
+				total += parseFloat(display);
 				break;
 			case 'substract':
-				total !== 0 && (total -= parseFloat(display));
-				!display && (display += '-');
+				total -= parseFloat(display);
 				break;
 			case 'multiply':
-				total !== 0 && (total = parseFloat((total * display).toFixed(2)));
-				!display && (display += '*');
+				total = parseFloat((total * display).toFixed(2));
 				break;
 			case 'divide':
-				total !== 0 && (total = parseFloat((total / display).toFixed(2)));
-				!display && (display += '/');
+				total = parseFloat((total / display).toFixed(2));
 				break;
 			default:
 				total = parseFloat(display);
@@ -27,15 +22,13 @@
 				break;
 		}
 	}
-
 	function setOperation(operation) {
 		resolveState();
 		state = operation;
 	}
-
 	function setValue(value) {
 		if (display.toString() == '0' || state == 'equal') {
-			display = '0';
+			display = '';
 		}
 		if (state == 'equal') {
 			state = null;
@@ -46,9 +39,8 @@
 			display = '';
 			return;
 		}
-		display += value;
+		display = display + value;
 	}
-
 	function equal() {
 		resolveState();
 		display = total;
