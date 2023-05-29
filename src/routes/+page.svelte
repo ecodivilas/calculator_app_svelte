@@ -2,6 +2,7 @@
 	let total = 0;
 	let console = '';
 	let state = null;
+
 	function resolveState() {
 		switch (state) {
 			case 'add':
@@ -26,10 +27,12 @@
 				break;
 		}
 	}
+
 	function setOperation(operation) {
 		resolveState();
 		state = operation;
 	}
+
 	function setValue(value) {
 		if (console.toString() == '0' || state == 'equal') {
 			console = '';
@@ -45,6 +48,7 @@
 		}
 		console = console + value;
 	}
+
 	function equal() {
 		resolveState();
 		console = total;
@@ -61,131 +65,35 @@
 		<input type="text" bind:value={console} readonly="true" />
 		<div class="buttons">
 			<div class="operations">
-				<button
-					on:click={() => {
-						setOperation('add');
-					}}
-				>
-					+
-				</button>
-				<button
-					on:click={() => {
-						setOperation('substract');
-					}}
-				>
-					-
-				</button>
-				<button
-					on:click={() => {
-						setOperation('multiply');
-					}}
-				>
-					&times;
-				</button>
-				<button
-					on:click={() => {
-						setOperation('divide');
-					}}
-				>
-					&divide;
-				</button>
+				<button on:click={() => setOperation('add')}>+</button>
+				<button on:click={() => setOperation('substract')}>-</button>
+				<button on:click={() => setOperation('multiply')}>&times;</button>
+				<button on:click={() => setOperation('divide')}>&divide;</button>
 			</div>
 			<div class="numbers">
 				<div>
-					<button
-						on:click={() => {
-							setValue(7);
-						}}
-					>
-						7
-					</button>
-					<button
-						on:click={() => {
-							setValue(8);
-						}}
-					>
-						8
-					</button>
-					<button
-						on:click={() => {
-							setValue(9);
-						}}
-					>
-						9
-					</button>
+					<button on:click={() => setValue('7')}>7</button>
+					<button on:click={() => setValue('8')}>8</button>
+					<button on:click={() => setValue('9')}>9</button>
 				</div>
 				<div>
-					<button
-						on:click={() => {
-							setValue(4);
-						}}
-					>
-						4
-					</button>
-					<button
-						on:click={() => {
-							setValue(5);
-						}}
-					>
-						5
-					</button>
-					<button
-						on:click={() => {
-							setValue(6);
-						}}
-					>
-						6
-					</button>
+					<button on:click={() => setValue('4')}>4</button>
+					<button on:click={() => setValue('5')}>5</button>
+					<button on:click={() => setValue('6')}>6</button>
 				</div>
 				<div>
-					<button
-						on:click={() => {
-							setValue(1);
-						}}
-					>
-						1
-					</button>
-					<button
-						on:click={() => {
-							setValue(2);
-						}}
-					>
-						2
-					</button>
-					<button
-						on:click={() => {
-							setValue(3);
-						}}
-					>
-						3
-					</button>
+					<button on:click={() => setValue('1')}>1</button>
+					<button on:click={() => setValue('2')}>2</button>
+					<button on:click={() => setValue('3')}>3</button>
 				</div>
 				<div>
-					<button
-						on:click={() => {
-							setValue(0);
-						}}
-					>
-						0
-					</button>
-					<button
-						on:click={() => {
-							setValue('.');
-						}}
-					>
-						.
-					</button>
-					<button
-						on:click={() => {
-							setValue('C');
-						}}
-					>
-						C
-					</button>
+					<button on:click={() => setValue('0')}>0</button>
+					<button on:click={() => setValue('.')}>.</button>
+					<button on:click={() => setValue('C')}>C</button>
 				</div>
 			</div>
 			<div class="equal">
-				<button on:click={equal}> = </button>
+				<button on:click={equal}>=</button>
 			</div>
 		</div>
 	</div>
@@ -205,6 +113,7 @@
 	}
 	.calculator {
 		width: 300px;
+		height: 300px;
 		border: 1px solid #eee;
 		box-shadow: 2px 2px 2px #eee;
 		padding: 10px;
