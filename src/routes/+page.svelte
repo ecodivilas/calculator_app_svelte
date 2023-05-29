@@ -1,29 +1,29 @@
 <script>
 	let total = 0;
-	let console = '';
+	let display = '';
 	let state = null;
 
 	function resolveState() {
 		switch (state) {
 			case 'add':
-				total += parseFloat(console);
-				console = '0';
+				total !== 0 && (total += parseFloat(display));
+				!display && (display += '+');
 				break;
 			case 'substract':
-				total -= parseFloat(console);
-				console = '0';
+				total !== 0 && (total -= parseFloat(display));
+				!display && (display += '-');
 				break;
 			case 'multiply':
-				total *= parseFloat(console);
-				console = '0';
+				total !== 0 && (total = parseFloat((total * display).toFixed(2)));
+				!display && (display += '*');
 				break;
 			case 'divide':
-				total /= parseFloat(console);
-				console = '0';
+				total !== 0 && (total = parseFloat((total / display).toFixed(2)));
+				!display && (display += '/');
 				break;
 			default:
-				total = parseFloat(console);
-				console = '0';
+				total = parseFloat(display);
+				display = '0';
 				break;
 		}
 	}
@@ -34,8 +34,8 @@
 	}
 
 	function setValue(value) {
-		if (console.toString() == '0' || state == 'equal') {
-			console = '';
+		if (display.toString() == '0' || state == 'equal') {
+			display = '0';
 		}
 		if (state == 'equal') {
 			state = null;
@@ -43,15 +43,15 @@
 		if (value == 'C') {
 			total = 0;
 			state = null;
-			console = '';
+			display = '';
 			return;
 		}
-		console = console + value;
+		display += value;
 	}
 
 	function equal() {
 		resolveState();
-		console = total;
+		display = total;
 		state = 'equal';
 	}
 </script>
@@ -62,7 +62,7 @@
 
 <div class="container">
 	<div class="calculator">
-		<input type="text" bind:value={console} readonly="true" />
+		<input type="text" bind:value={display} readonly="true" />
 		<div class="buttons">
 			<div class="operations">
 				<button on:click={() => setOperation('add')}>+</button>
@@ -129,7 +129,7 @@
 		width: 100%;
 	}
 	.calculator input {
-		width: 85.6%;
+		width: 258px;
 		padding: 20px;
 		outline: none;
 		text-align: right;
